@@ -16,4 +16,57 @@
             }
         }
     }
+
+    .arrows {
+        .arrow {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff70;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #555;
+            box-shadow: 0 2px 6px rgba(0,0,0,.2);
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+            -webkit-transition: all 0.3s ease 0s;
+            &.left {
+                left: 30px;
+            }
+            &.right {
+                right: 30px;
+            }
+            &:hover {
+                background-color: #fff;
+                box-shadow: 0 2px 6px rgba(0,0,0,.35);
+            }
+        }
+    }
+
+    .dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        column-gap: 8px;
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+            -webkit-transition: all 0.3s ease 0s;
+            &:hover,
+            &.active {
+                background-color: tomato;
+            }
+        }
+    }
 }
