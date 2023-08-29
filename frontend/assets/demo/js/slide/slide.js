@@ -36,7 +36,7 @@ slide_div.addEventListener('transitionend', function(){
         alert('Ok')
     }
 
-    if(counter === 0){
+    if(counter === -1){
         // slides[0].style.transition = "none";
         console.log(counter);
         alert('SDIf')

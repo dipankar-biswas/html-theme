@@ -25,42 +25,44 @@
             <!-- Page Main Content Start -->
             <main id="maincontent" class="page-main">
                 <div class="container">
+                    <div class="thumbnail">
+                        <div class="image">
+                            <div class="remove-btn ImageRemove">X</div>
+                            <img class="imageDefault" src="../../assets/images/dummy-img.png" alt="Thumbnail">
+                            <img class="imagePreview" src="" alt="Thumbnail">
+                        </div>
+                        <button type="button" class="btn btn-border btn-sm imageSelect">Upload/Add image</button>
+                        <input type="file" class="dt-none fileOpen">
+                    </div>
+
+                    <div class="thumbnail">
+                        <div class="image">
+                            <div class="remove-btn ImageRemove">X</div>
+                            <img class="imageDefault" src="../../assets/images/dummy-img.png" alt="Thumbnail">
+                            <img class="imagePreview" src="" alt="Thumbnail">
+                        </div>
+                        <button type="button" class="btn btn-border btn-sm imageSelect">Upload/Add image</button>
+                        <input type="file" class="dt-none fileOpen">
+                    </div>
                     <!-- Multiadd Code Start -->
                     <div class="multiadd">
                         <ul class="items">
                             <li class="item">
-                                <div class="left">
-                                    <div class="thumbnail">
-                                        <div class="image">
-                                            <div class="remove-btn ImageRemove">X</div>
-                                            <img class="imageDefault" src="../../assets/images/dummy-img.png" alt="Thumbnail">
-                                            <img class="imagePreview" src="" alt="Thumbnail">
-                                        </div>
-                                        <button type="button" class="btn btn-border btn-sm imageSelect">Upload/Add image</button>
-                                        <input type="file" class="dt-none fileOpen">
-                                    </div>
+                                <div class="data-group">
+                                    <input type="text" placeholder="Name">
+                                    <input type="text" placeholder="Price">
+                                    <input type="text" placeholder="Quantity">
                                 </div>
-                                <div class="right">
-                                    
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="left">
-                                    <div class="thumbnail">
-                                        <div class="image">
-                                            <div class="remove-btn ImageRemove">X</div>
-                                            <img class="imageDefault" src="../../assets/images/dummy-img.png" alt="Thumbnail">
-                                            <img class="imagePreview" src="" alt="Thumbnail">
-                                        </div>
-                                        <button type="button" class="btn btn-border btn-sm imageSelect">Upload/Add image</button>
-                                        <input type="file" class="dt-none fileOpen">
-                                    </div>
-                                </div>
-                                <div class="right">
-                                    
+                                <div class="actions">
+                                    <button type="button" class="remove-btn" v-show="k < inputs.length-1 || ( !k && inputs.length > 1)"
+                                        @click="remove(k)">-
+                                    </button>
+                                    <button type="button" class="add-btn" @click="add(k)" v-show="k == inputs.length-1">+
+                                    </button>
                                 </div>
                             </li>
                         </ul>
+
                     </div>
                     <!-- Multiadd Code End -->
                 </div>
