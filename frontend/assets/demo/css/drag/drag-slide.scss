@@ -23,6 +23,7 @@
         justify-content: center;
         &.left {
             left: 0;
+            display: none;
             background: linear-gradient(90deg, #fff 70%, transparent);
         }
         &.right {
