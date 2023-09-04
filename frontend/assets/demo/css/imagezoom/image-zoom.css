@@ -1,0 +1,45 @@
+#apps {
+  min-height: 100vh;
+  max-width: 1400px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+  margin: auto;
+  display: table;
+}
+
+.image-zoom {
+  display: flex;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+}
+.image-zoom .image {
+  position: relative;
+}
+.image-zoom .image img {
+  width: 500px;
+  height: 500px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.image-zoom .image .magnifier-lens {
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  background-color: rgba(132, 132, 132, 0.5176470588);
+  border: 1px solid #ddd;
+}
+.image-zoom .details {
+  position: relative;
+}
+.image-zoom .details .magnified-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+}/*# sourceMappingURL=image-zoom.css.map */
