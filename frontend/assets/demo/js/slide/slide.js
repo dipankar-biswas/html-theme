@@ -28,7 +28,7 @@ let slideImage = () => {
     })
 }
 
-slide_div.addEventListener('transitionend', function(){
+slide_div.addEventListener('transitionend', function(){ 
 
     if(slides.length === counter){
         slides[0].style.transition = "none";
