@@ -7,6 +7,9 @@
   height: 550px;
   overflow: hidden;
 }
+.slides-section .slides.no-transition {
+  scroll-behavior: auto;
+}
 .slides-section .slides .slide {
   position: absolute;
   width: 100%;

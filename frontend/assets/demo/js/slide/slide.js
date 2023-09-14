@@ -1,45 +1,61 @@
 
-let slides = document.querySelectorAll('.slides .slide');
-let slide_div = document.querySelector('.slides .slide');
+let slide_div = document.querySelector('.slides');
+let slideWidth = slide_div.querySelector('.slide').offsetWidth;
+let slides = [...slide_div.children];
+
 let counter = 0;
+let slideBtn = document.querySelectorAll('.arrows .arrow');
+
 
 slides.forEach((slide, index) => {
     slide.style.left = `${index * 100}%`;
 })
 
+// Insert copies of the last few cards to beginning of carousel for infinite scrolling
+slides.slice(-slideWidth).reverse().forEach(item => {
+    slide_div.insertAdjacentHTML("afterbegin", item.outerHTML);
+});
+// Insert copies of the first few cards to end of carousel for infinite scrolling
+slides.slice(0, slideWidth).forEach(item => {
+    slide_div.insertAdjacentHTML("beforeend", item.outerHTML);
+});
 
-let prevImg = document.querySelector('.arrows .arrow.left');
-let nextImg = document.querySelector('.arrows .arrow.right');
+// slide_div.classList.add("no-transition");
+// slide_div.style.left = slide_div.offsetWidth;
+// slide_div.classList.remove("no-transition");
+// console.log(slide_div.offsetWidth);
 
-prevImg.addEventListener('click', function(){
-    console.log(counter);
-    counter--;
-    slideImage();
-})
 
-nextImg.addEventListener('click', function(){
-    counter++;
-    slideImage();
+
+slideBtn.forEach(btn => {
+    btn.addEventListener('click', function(){
+        btn.className == 'arrow right' ? counter++ : counter--;
+        slideImage();
+    })
 })
 
 let slideImage = () => {
     slides.forEach((slide) => {
         slide.style.transform = `translateX(-${counter * 100}%)`;
     })
+    // infiniteScroll();
 }
 
-slide_div.addEventListener('transitionend', function(){
 
-    if(slides.length === counter){
-        slides[0].style.transition = "none";
-        console.log(counter);
-        alert('Ok')
+const infiniteScroll = () => {
+    // If the carousel is at the beginning, scroll to the end
+    if(slide_div.style.left === 0) {
+        slide_div.classList.add("no-transition");
+        slide_div.style.left = slide_div.offsetWidth - (2 * slide_div.offsetWidth);
+        slide_div.classList.remove("no-transition");
     }
-
-    if(counter === -1){
-        // slides[0].style.transition = "none";
-        console.log(counter);
-        alert('SDIf')
+    // If the carousel is at the end, scroll to the beginning
+    else if(Math.ceil(slide_div.style.left) === slide_div.style.left - slide_div.offsetWidth) {
+        slide_div.classList.add("no-transition");
+        slide_div.style.left = slide_div.offsetWidth;
+        slide_div.classList.remove("no-transition");
     }
+}
 
-})
+
+slide_div.addEventListener("scroll", infiniteScroll);

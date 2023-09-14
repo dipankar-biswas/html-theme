@@ -30,6 +30,10 @@
   height: 100px;
   background-color: rgba(132, 132, 132, 0.5176470588);
   border: 1px solid #ddd;
+  opacity: 0;
+}
+.image-zoom .image .magnifier-lens.active {
+  opacity: 1;
 }
 .image-zoom .details {
   position: relative;
@@ -40,6 +44,13 @@
   top: 0;
   width: 500px;
   height: 500px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
   background-color: #ffffff;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.image-zoom .details .magnified-img.active {
+  transform: scale(1);
+  opacity: 1;
 }/*# sourceMappingURL=image-zoom.css.map */
