@@ -41,7 +41,6 @@ let slideImage = () => {
     // infiniteScroll();
 }
 
-
 const infiniteScroll = () => {
     // If the carousel is at the beginning, scroll to the end
     if(slide_div.style.left === 0) {
