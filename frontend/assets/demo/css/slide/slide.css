@@ -1,71 +1,147 @@
-.slides-section {
-  position: relative;
+/* Import Google font - Poppins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.slides-section .slides {
-  position: relative;
+
+body {
+  display: flex;
+  padding: 0 35px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to left top, #031A9A, #8B53FF);
+}
+
+.slide-wrap {
+  max-width: 1100px;
   width: 100%;
-  height: 400px;
-  overflow: hidden;
+  position: relative;
 }
-.slides-section .slides.no-transition {
+
+.slide-wrap i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+
+.slide-wrap i:active {
+  transform: translateY(-50%) scale(0.85);
+}
+
+.slide-wrap i:first-child {
+  left: -22px;
+}
+
+.slide-wrap i:last-child {
+  right: -22px;
+}
+
+.slide-wrap {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+.slide-wrap .slides {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% - 0px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* gap: 16px; */
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.slide-wrap .slides::-webkit-scrollbar {
+  display: none;
+}
+.slide-wrap .slides.no-transition {
   scroll-behavior: auto;
 }
-.slides-section .slides .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transition: 1s;
+.slide-wrap .slides.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
 }
-.slides-section .slides .slide img {
-  width: 100%;
-  height: 100%;
+.slide-wrap .slides.dragging .slide {
+  cursor: grab;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
-.slides-section .arrows .arrow {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.4392156863);
-  top: 50%;
-  transform: translateY(-50%);
+.slide-wrap .slides :where(.slide, .img) {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  font-size: 20px;
-  color: #555;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.slide-wrap .slides .slide {
+  scroll-snap-align: start;
+  height: 450px;
+  list-style: none;
+  background: #fff;
   cursor: pointer;
-  transition: all 0.3s ease 0s;
-  -webkit-transition: all 0.3s ease 0s;
+  flex-direction: column;
+  border-radius: 8px;
 }
-.slides-section .arrows .arrow.left {
-  left: 30px;
+.slide-wrap .slides .slide .img {
+  background: #8B53FF;
+  height: 100%;
+  width: 100%;
 }
-.slides-section .arrows .arrow.right {
-  right: 30px;
+.slide-wrap .slides .slide .img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.slides-section .arrows .arrow:hover {
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
-}
-.slides-section .dots {
+.slide-wrap .arrow .icon {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  -moz-column-gap: 8px;
-       column-gap: 8px;
+  align-items: center;
+  height: 100%;
+  width: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: center;
 }
-.slides-section .dots .dot {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
+.slide-wrap .arrow .icon.left {
+  left: 0;
+}
+.slide-wrap .arrow .icon.right {
+  right: 0;
+}
+.slide-wrap .arrow .icon i {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  border: 1px solid transparent;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease 0s;
-  -webkit-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s eaes 0s;
 }
-.slides-section .dots .dot:hover, .slides-section .dots .dot.active {
-  background-color: tomato;
+
+@media screen and (max-width: 900px) {
+  .slide-wrap .slides {
+    grid-auto-columns: calc(100% - 0px);
+  }
+}
+@media screen and (max-width: 600px) {
+  .slide-wrap .slides {
+    grid-auto-columns: 100%;
+  }
 }/*# sourceMappingURL=slide.css.map */

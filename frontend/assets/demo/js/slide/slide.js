@@ -1,60 +1,84 @@
+const slideWrap = document.querySelector(".slide-wrap");
+const slides = document.querySelector(".slides");
+const firstSlideWidth = slides.querySelector(".slide").offsetWidth;
+const arrowBtns = document.querySelectorAll(".slide-wrap i");
+const slidesChildren = [...slides.children];
 
-let slide_div = document.querySelector('.slides');
-let slideWidth = slide_div.querySelector('.slide').offsetWidth;
-let slides = [...slide_div.children];
+let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
 
-let counter = 0;
-let slideBtn = document.querySelectorAll('.arrows .arrow');
+// Get the number of slide that can fit in the slides at once
+let slidePerView = Math.round(slides.offsetWidth / firstSlideWidth);
 
-
-slides.forEach((slide, index) => {
-    slide.style.left = `${index * 100}%`;
-})
-
-// Insert copies of the last few cards to beginning of carousel for infinite scrolling
-slides.slice(-slideWidth).reverse().forEach(item => {
-    slide_div.insertAdjacentHTML("afterbegin", item.outerHTML);
-});
-// Insert copies of the first few cards to end of carousel for infinite scrolling
-slides.slice(0, slideWidth).forEach(item => {
-    slide_div.insertAdjacentHTML("beforeend", item.outerHTML);
+// Insert copies of the last few slide to beginning of slides for infinite scrolling
+slidesChildren.slice(-slidePerView).reverse().forEach(slide => {
+    slides.insertAdjacentHTML("afterbegin", slide.outerHTML);
 });
 
-// slide_div.classList.add("no-transition");
-// slide_div.style.left = slide_div.offsetWidth;
-// slide_div.classList.remove("no-transition");
-// console.log(slide_div.offsetWidth);
+// Insert copies of the first few slide to end of slides for infinite scrolling
+slidesChildren.slice(0, slidePerView).forEach(slide => {
+    slides.insertAdjacentHTML("beforeend", slide.outerHTML);
+});
 
+// Scroll the slides at appropriate postition to hide first few duplicate slide on Firefox
+slides.classList.add("no-transition");
+slides.scrollLeft = slides.offsetWidth;
+slides.classList.remove("no-transition");
 
+// Add event listeners for the arrow buttons to scroll the slides left and right
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        slides.scrollLeft += btn.id == "left" ? -firstSlideWidth : firstSlideWidth;
+    });
+});
 
-slideBtn.forEach(btn => {
-    btn.addEventListener('click', function(){
-        btn.className == 'arrow right' ? counter++ : counter--;
-        slideImage();
-    })
-})
+const dragStart = (e) => {
+    isDragging = true;
+    slides.classList.add("dragging");
+    // Records the initial cursor and scroll position of the slides
+    startX = e.pageX;
+    startScrollLeft = slides.scrollLeft;
+}
 
-let slideImage = () => {
-    slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${counter * 100}%)`;
-    })
-    // infiniteScroll();
+const dragging = (e) => {
+    if(!isDragging) return; // if isDragging is false return from here
+    // Updates the scroll position of the slides based on the cursor movement
+    slides.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = () => {
+    isDragging = false;
+    slides.classList.remove("dragging");
 }
 
 const infiniteScroll = () => {
-    // If the carousel is at the beginning, scroll to the end
-    if(slide_div.style.left === 0) {
-        slide_div.classList.add("no-transition");
-        slide_div.style.left = slide_div.offsetWidth - (2 * slide_div.offsetWidth);
-        slide_div.classList.remove("no-transition");
+    // If the slides is at the beginning, scroll to the end
+    if(slides.scrollLeft === 0) {
+        slides.classList.add("no-transition");
+        slides.scrollLeft = slides.scrollWidth - (2 * slides.offsetWidth);
+        slides.classList.remove("no-transition");
     }
-    // If the carousel is at the end, scroll to the beginning
-    else if(Math.ceil(slide_div.style.left) === slide_div.style.left - slide_div.offsetWidth) {
-        slide_div.classList.add("no-transition");
-        slide_div.style.left = slide_div.offsetWidth;
-        slide_div.classList.remove("no-transition");
+    // If the slides is at the end, scroll to the beginning
+    else if(Math.ceil(slides.scrollLeft) === slides.scrollWidth - slides.offsetWidth) {
+        slides.classList.add("no-transition");
+        slides.scrollLeft = slides.offsetWidth;
+        slides.classList.remove("no-transition");
     }
+
+    // Clear existing timeout & start autoplay if mouse is not hovering over slides
+    clearTimeout(timeoutId);
+    if(!slideWrap.matches(":hover")) autoPlay();
 }
 
+const autoPlay = () => {
+    if(window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+    // Autoplay the slides after every 2500 ms
+    timeoutId = setTimeout(() => slides.scrollLeft += firstSlideWidth, 2500);
+}
+autoPlay();
 
-slide_div.addEventListener("scroll", infiniteScroll);
+slides.addEventListener("mousedown", dragStart);
+slides.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+slides.addEventListener("scroll", infiniteScroll);
+slideWrap.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+slideWrap.addEventListener("mouseleave", autoPlay);

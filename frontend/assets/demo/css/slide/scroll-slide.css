@@ -32,10 +32,10 @@ body {
   justify-content: center;
 }
 .scroll-slide .icon.left {
-  left: 0;
+  left: -40px;
 }
 .scroll-slide .icon.right {
-  right: 0;
+  right: -40px;
 }
 .scroll-slide .icon i {
   width: 50px;
