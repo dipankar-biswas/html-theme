@@ -1,7 +1,7 @@
 const slideWrap = document.querySelector(".slide-wrap");
 const slides = document.querySelector(".slides");
 const firstSlideWidth = slides.querySelector(".slide").offsetWidth;
-const arrowBtns = document.querySelectorAll(".slide-wrap i");
+const arrowBtns = document.querySelectorAll(".slide-wrap .arrow .icon");
 const slidesChildren = [...slides.children];
 
 let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;

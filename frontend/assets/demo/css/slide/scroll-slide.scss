@@ -18,29 +18,94 @@ body {
   max-width: 1100px;
   width: 100%;
   position: relative;
-    .icon {
+    
+    .slides{
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% / 3) - 12px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      border-radius: 8px;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &.no-transition {
+        scroll-behavior: auto;
+      }
+      &.dragging {
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+        .slide {
+          cursor: grab;
+          user-select: none;
+        }
+      }
+      & :where(.slide, .img) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .slide {
+          scroll-snap-align: start;
+          height: 342px;
+          list-style: none;
+          background: #fff;
+          cursor: pointer;
+          padding-bottom: 15px;
+          flex-direction: column;
+          border-radius: 8px;
+          .img {
+              background: #8B53FF;
+              height: 148px;
+              width: 148px;
+              border-radius: 50%;
+              img {
+                  width: 140px;
+                  height: 140px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  border: 4px solid #fff;
+              }
+          }
+          h2 {
+              font-weight: 500;
+              font-size: 1.56rem;
+              margin: 30px 0 5px;
+          }
+          span {
+              color: #6A6D78;
+              font-size: 1.31rem;
+          }
+      }
+    }
+
+    .arrow {
+      .icon {
         position: absolute;
         display: flex;
         align-items: center;
-        height: 100%;
-        width: 80px;
         top: 50%;
         transform: translateY(-50%);
         justify-content: center;
         &.left {
-            left: -40px;
+            left: -25px;
             // display: none;
             // background: linear-gradient(90deg, #fff 70%, transparent);
         }
         &.right {
-            right: -40px;
+            right: -25px;
             // background: linear-gradient(-90deg, #fff 70%, transparent);
         }
         i {
             width: 50px;
             height: 50px;
+            background-color: #fff;
             border-radius: 50%;
             border: 1px solid transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,.25);
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -51,79 +116,17 @@ body {
                 background-color: #ccc;
             }
         }
-    }
-    
-    .carousel{
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: calc((100% / 3) - 12px);
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 16px;
-        border-radius: 8px;
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-          display: none;
-        }
-        &.no-transition {
-          scroll-behavior: auto;
-        }
-        &.dragging {
-          scroll-snap-type: none;
-          scroll-behavior: auto;
-          .card {
-            cursor: grab;
-            user-select: none;
-          }
-        }
-        & :where(.card, .img) {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .card {
-            scroll-snap-align: start;
-            height: 342px;
-            list-style: none;
-            background: #fff;
-            cursor: pointer;
-            padding-bottom: 15px;
-            flex-direction: column;
-            border-radius: 8px;
-            .img {
-                background: #8B53FF;
-                height: 148px;
-                width: 148px;
-                border-radius: 50%;
-                img {
-                    width: 140px;
-                    height: 140px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    border: 4px solid #fff;
-                }
-            }
-            h2 {
-                font-weight: 500;
-                font-size: 1.56rem;
-                margin: 30px 0 5px;
-            }
-            span {
-                color: #6A6D78;
-                font-size: 1.31rem;
-            }
-        }
+      }
     }
     
     @media screen and (max-width: 900px) {
-        .scroll-slide .carousel {
+        .scroll-slide .slides {
             grid-auto-columns: calc((100% / 2) - 9px);
         }
     }
     
     @media screen and (max-width: 600px) {
-        .scroll-slide .carousel {
+        .scroll-slide .slides {
             grid-auto-columns: 100%;
         }
     }
