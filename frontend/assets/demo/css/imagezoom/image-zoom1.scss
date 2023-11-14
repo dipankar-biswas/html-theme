@@ -1,0 +1,29 @@
+
+
+#apps {
+    min-height: 100vh;
+    max-width: 1400px;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 80px;
+    margin: auto;
+    display: table;
+}
+.image-zoom {
+    display: flex;
+    column-gap: 12px;
+    .image {
+        position: relative;
+        img {
+            width: 500px;
+            height: 500px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.25);
+        }
+    }
+    .details {
+        
+    }
+}
