@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Text Typing Effect</title>
+    <style>
+        .typing {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .text-container {
+            text-align: center;
+            font-family: monospace;
+            font-size: 24px;
+        }
+        h2 span {
+            color: #BD53ED;
+            position: relative;
+        }
+        h2 span::before {
+            content: "";
+            height: 30px;
+            width: 2px;
+            position: absolute;
+            top: 50%;
+            right: -8px;
+            background: #BD53ED;
+            transform: translateY(-45%);
+            animation: blink 0.7s infinite;
+        }
+        h2 span.stop-blinking::before {
+            animation: none;
+        }
+        @keyframes blink {
+            50% { opacity: 0 }
+        }
+    </style>
+</head>
+<body>
+    <div class="typing">
+        <div class="text-container">
+            <h2>Welcome to : <span id="text"></span></h2>
+        </div>
+    </div>
+    <script>
+        const textElement = document.getElementById("text");
+        const textArray = [
+            "Facebook",
+            "Twitter",
+            "Instragram",
+            "Linkedin",
+            "Youtube",
+        ];
+        let lineIndex = 0;
+        let charIndex = 0;
+        let isTyping = true;
+
+        function typeText() {
+            const line = textArray[lineIndex];
+
+            if (isTyping) {
+                if (charIndex < line.length) {
+                    textElement.textContent = line.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeText, 100); // Adjust typing speed (milliseconds)
+                } else {
+                    isTyping = false;
+                    setTimeout(typeText, 1500); // Delay before erasing (milliseconds)
+                }
+            } else {
+                if (charIndex > 0) {
+                    textElement.textContent = line.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(typeText, 100); // Adjust erasing speed (milliseconds)
+                } else {
+                    isTyping = true;
+                    lineIndex = (lineIndex + 1) % textArray.length;
+                    setTimeout(typeText, 1500); // Delay before typing the next line (milliseconds)
+                }
+            }
+        }
+
+        // Start the typing and erasing effect when the page loads
+        window.onload = typeText;
+    </script>
+</body>
+</html>
