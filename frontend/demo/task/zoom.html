@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            padding: 100px 0;
+            list-style: none;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            column-gap: 20px;
+        }
+        ul li img {
+            max-width: 100%;
+        }
+        .displayImage.show {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-color: #00000071;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .displayImage.show img {
+            max-width: 600px;
+            width: 100%;
+            height: 500px;
+            animation: zoom 0.6s;
+            transition: all 0.3s ease 0s;
+            -webkit-transition: all 0.3s ease 0s;
+        }
+
+        @keyframes zoom {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="displayImage">
+        <img src="" alt="Image">
+    </div>
+    <ul>
+        <li>
+            <img src="https://www.debtcollectionindianapolis.com/wp-content/uploads/2023/01/statusReort1-723x423.gif" alt="Image">
+        </li>
+        <li>
+            <img src="https://www.debtcollectionindianapolis.com/wp-content/uploads/2023/01/statusReort1-723x423.gif" alt="Image">
+        </li>
+        <li>
+            <img src="https://www.debtcollectionindianapolis.com/wp-content/uploads/2023/01/statusReort1-723x423.gif" alt="Image">
+        </li>
+    </ul>
+
+    <script type="text/javascript">
+        let items = document.querySelectorAll('ul li img');
+        let displayImage = document.querySelector('.displayImage');
+        for (let i = 0; i < items.length; i++) {
+            const element = items[i];
+            element.addEventListener('click', () => {
+                displayImage.classList.add('show');
+                // displayImage.src= searchPic.src;
+                displayImage.querySelector('img').src = items[i].src;
+            })
+        }
+    </script>
+</body>
+</html>
