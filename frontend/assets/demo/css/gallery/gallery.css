@@ -1,0 +1,48 @@
+.gallery-wrap .gallery-tabs {
+  display: flex;
+  justify-content: center;
+}
+.gallery-wrap .gallery-tabs .tabs {
+  display: flex;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+  list-style: none;
+}
+.gallery-wrap .gallery-tabs .tabs .tab {
+  background-color: #2377af;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+}
+.gallery-wrap .gallery-tabs .tabs .tab:hover {
+  background-color: #1d6291;
+}
+.gallery-wrap .gallery-tabs .tabs .tab.active {
+  background-color: #174d70;
+}
+.gallery-wrap .gellaries {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  row-gap: 30px;
+}
+.gallery-wrap .gellaries .item.show {
+  opacity: 1;
+  display: block;
+  transition: opacity 0.5s, display 0.5s;
+}
+.gallery-wrap .gellaries .item.hide {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s, display 0.5s;
+}
+.gallery-wrap .gellaries .item .thumb img {
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=gallery.css.map */

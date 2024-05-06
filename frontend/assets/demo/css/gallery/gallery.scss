@@ -1,0 +1,54 @@
+.gallery-wrap {
+    .gallery-tabs {
+        display: flex;
+        justify-content: center;
+        .tabs {
+            display: flex;
+            column-gap: 12px;
+            list-style: none;
+            .tab {
+                background-color: #2377af;
+                color: #fff;
+                padding: 6px 16px;
+                border-radius: 30px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                -webkit-transition: all 0.3s ease;
+                &:hover {
+                    background-color: #1d6291;
+                }
+                &.active {
+                    background-color: #174d70;
+                }
+            }
+        }
+    }
+    .gellaries {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        column-gap: 20px;
+        row-gap: 30px;
+        .item {
+            &.show {
+                opacity: 1;
+                display: block;
+
+                transition: opacity .5s, display .5s;
+            }
+            &.hide {
+                opacity: 0;
+                display: none;
+
+                transition: opacity .5s, display .5s;
+            }
+
+            .thumb {
+                img {
+                    max-width: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+    }     
+}

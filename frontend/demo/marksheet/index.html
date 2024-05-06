@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Marksheet</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .main-page {
+                background: #E8DDDB;
+                padding: 30px;
+            }
+            .content{
+                position: relative;
+                padding: 50px;
+            }
+            table.table-bordered {
+                border: 1px solid #252525 !important;
+            }
+            table.table-bordered.one th, table.table-bordered.one td {
+                text-align: center;
+            }
+            table.table-bordered.two th, 
+            table.table-bordered.two td:nth-child(1),
+            table.table-bordered.two td:nth-child(3),
+            table.table-bordered.two td:nth-child(4),
+            table.table-bordered.two td:nth-child(5) {
+                text-align: center;
+                vertical-align: middle;
+            }
+            table.table-bordered.two td:nth-child(6) {
+                text-align: center;
+                padding-top: 150px;
+            }
+            table.table-bordered.two tbody tr:nth-child(9) td {
+                text-align: start;
+            }
+            th,td {background-color:transparent !important}
+            .text-xsmall {
+                font-size: 12px;
+            }
+            .text-xsmall th, .text-xsmall td {
+                padding: 4px;
+            }
+            .information tr td:first-child {
+                width: 200px;
+            }
+            .information.three tr td:first-child {
+                width: 170px;
+                text-align: end;
+            }
+
+            .bb {border-bottom: 1px solid #252525 !important;}
+            .bdr {
+                position: absolute;
+                background: #adadad;
+            }
+            .bdr.one, .bdr.three {
+                width: 20px;
+                height: 100%;
+            }
+            .bdr.two, .bdr.four {
+                width: 100%;
+                height: 20px;
+            }
+            .bdr.one, .bdr.two {
+                left: 0;
+                top: 0;
+            }
+            .bdr.three, .bdr.four {
+                right: 0;
+                bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container py-3">
+            <div class="main-page">
+                <div class="content">
+                    <div class="bdr one"></div>
+                    <div class="bdr two"></div>
+                    <div class="bdr three"></div>
+                    <div class="bdr four"></div>
+                    <div class="heading">
+                        <h3 class="text-center text-secondary">Board Of Intermediate Secondary Education, Comilla</h3>
+                        <h3 class="text-center text-secondary">Bangladesh</h3>
+                        <h3 class="text-center text-body mt-4">Secondary School Certificate Examination 2024</h3>
+                    </div>
+                    <div class="head mt-3">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="d-flex flex-column justify-content-around h-75">
+                                    <h5 class="text-center text-body">Serial No. CB 617656</h5>
+                                    <h5 class="text-center text-body">CBCS08 7861765246</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="d-flex flex-column align-items-center ">
+                                    <img src="./logo.png" alt="Logo" class="w-50">
+                                    <h2 class="text-success text-decoration-underline mt-4">Academic Transcript</h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="d-flex justify-content-end">
+                                    <table class="table table-bordered one text-xsmall" style="width:80%">
+                                        <thead>
+                                            <tr>
+                                                <th><span>Letter Grade</span></th>
+                                                <th><span>Class Inverval</span></th>
+                                                <th><span>Grade Point</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>A+</td>
+                                                <td>80-100</td>
+                                                <td>5.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>A</td>
+                                                <td>70-79</td>
+                                                <td>4.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>A-</td>
+                                                <td>60-69</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>B</td>
+                                                <td>50-59</td>
+                                                <td>3.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>C</td>
+                                                <td>40-49</td>
+                                                <td>2.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>D</td>
+                                                <td>00-32</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body mt-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table class="table table-borderless information">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Name Of Student</strong></td>
+                                            <td>Dipankar Chandra Biswas</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Father's Name</strong></td>
+                                            <td>Jibon Chandra Biswas</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Mother's Name</strong></td>
+                                            <td>Lilima Rani Biswas</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Name Of Institute</strong></td>
+                                            <td>Comilla High School, Comilla</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-6">
+                                <table class="table table-borderless information">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Name Of Center</strong></td>
+                                            <td>Comilla</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Roll No</strong></td>
+                                            <td>163654</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Group</strong></td>
+                                            <td>Science</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-6">
+                                <table class="table table-borderless information three">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Type</strong></td>
+                                            <td>Regular</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Registration No</strong></td>
+                                            <td>111163654</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Date of Birth</strong></td>
+                                            <td>14/09/1997</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table class="table table-bordered two bg-transparent">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl. No.</th>
+                                            <th>Name Of Subjects</th>
+                                            <th>Letter Grade</th>
+                                            <th>Grade Point</th>
+                                            <th>
+                                                <div>GPA</div>
+                                                <small>Without additional subject</small>
+                                            </th>
+                                            <th>GPA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Bangla</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                            <td rowspan="8">
+                                                <strong>5</strong>
+                                            </td>
+                                            <td rowspan="10">
+                                                <strong>5</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>English</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Mathmatics</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Science</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Sociality</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Religius</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Religius</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Religius</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"><strong class="text-body">Additional Subject</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>Religius</td>
+                                            <td>A+</td>
+                                            <td>5</td>
+                                            <td class="p-0">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <span class="d-flex justify-content-center bb" style="width:100%">GP Abobe 2</span>
+                                                    <span class="d-flex justify-content-center" style="width:100%">4.00</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col-lg-8">
+                                <p class="text-bory">Date of publication of result June 20, 2024</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p class="text-bory text-end">Controller of Examinations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>
